@@ -1,17 +1,120 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from 'react-dom/client'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import './index.css'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import { TbChessRookFilled } from 'react-icons/tb'
+import { TbChessKnightFilled } from 'react-icons/tb'
+import { TbChessBishopFilled } from 'react-icons/tb'
+import { TbChessKingFilled } from 'react-icons/tb'
+import { TbChessQueenFilled } from 'react-icons/tb'
+import { TbChessFilled } from 'react-icons/tb'
+
+
+
+const Black = [
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+]
+const White = [
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+  'rgb(107, 200, 150)',
+  'green',
+]
+
+const row1 = [
+  <TbChessRookFilled />,
+  <TbChessKnightFilled />,
+  <TbChessBishopFilled />,
+  <TbChessKingFilled />,
+  <TbChessQueenFilled />,
+  <TbChessBishopFilled />,
+  <TbChessKnightFilled />,
+  <TbChessRookFilled />,
+]
+
+const Chess = () => {
+  return (
+    <div className="chess">
+      <table>
+        <tbody>
+          <tr>
+            {Black.map((color, index) => {
+              return (
+                <td key={index} style={{ backgroundColor: color }}>
+                  <p style={{color:'black',fontSize:'30px'}}>{row1[index]}</p>
+                </td>
+              )
+            })}
+          </tr>
+          <tr>
+            {White.map((color, index) => {
+              return (
+                <td key={index} style={{ backgroundColor: color }}>
+                  <p style={{ color: 'black', fontSize: '30px' }}>
+                    <TbChessFilled />
+                  </p>
+                </td>
+              )
+            })}
+          </tr>
+          <tr>
+            {Black.map((color, index) => {
+              return <td key={index} style={{ backgroundColor: color }}></td>
+            })}
+          </tr>
+          <tr>
+            {White.map((color, index) => {
+              return <td key={index} style={{ backgroundColor: color }}></td>
+            })}
+          </tr>
+          <tr>
+            {Black.map((color, index) => {
+              return <td key={index} style={{ backgroundColor: color }}></td>
+            })}
+          </tr>
+          <tr>
+            {White.map((color, index) => {
+              return <td key={index} style={{ backgroundColor: color }}></td>
+            })}
+          </tr>
+          <tr>
+            {Black.map((color, index) => {
+              return (
+                <td key={index} style={{ backgroundColor: color }}>
+                  <p style={{ color: 'white', fontSize: '30px' }}>
+                    <TbChessFilled />
+                  </p>
+                </td>
+              )
+            })}
+          </tr>
+          <tr>
+            {White.map((color, index) => {
+              return (
+                <td key={index} style={{ backgroundColor: color }}>
+                  <p style={{ color: 'white', fontSize: '30px' }}>
+                    {row1[7-index]}
+                  </p>
+                </td>
+              )
+            })}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+const root = createRoot(document.getElementById('root'))
+root.render(<Chess />)
